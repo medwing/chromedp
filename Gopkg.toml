@@ -1,0 +1,41 @@
+# Gopkg.toml example
+#
+# Refer to https://golang.github.io/dep/docs/Gopkg.toml.html
+# for detailed Gopkg.toml documentation.
+#
+# required = ["github.com/user/thing/cmd/thing"]
+# ignored = ["github.com/user/project/pkgX", "bitbucket.org/user/project/pkgA/pkgY"]
+#
+# [[constraint]]
+#   name = "github.com/user/project"
+#   version = "1.0.0"
+#
+# [[constraint]]
+#   name = "github.com/user/project2"
+#   branch = "dev"
+#   source = "github.com/myfork/project2"
+#
+# [[override]]
+#   name = "github.com/x/y"
+#   version = "2.4.0"
+#
+# [prune]
+#   non-go = false
+#   go-tests = true
+#   unused-packages = true
+
+[[constraint]]
+  revision = "4da64dd111ac8d969e24d553bc977b0b7e276e24"
+  name = "github.com/chromedp/cdproto"
+
+[[constraint]]
+  name = "github.com/gobwas/ws"
+  version = "1.0.3"
+
+[[constraint]]
+  name = "github.com/mailru/easyjson"
+  version = "0.7.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true

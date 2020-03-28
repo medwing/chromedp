@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"math"
 	"strconv"
 	"strings"
 	"sync"
@@ -15,6 +14,7 @@ import (
 	"github.com/chromedp/cdproto/dom"
 	"github.com/chromedp/cdproto/page"
 	"github.com/chromedp/cdproto/runtime"
+	"gonum.org/v1/gonum/floats"
 )
 
 // QueryAction are element query actions that select node elements from the
@@ -1048,10 +1048,10 @@ func Screenshot(sel interface{}, picbuf *[]byte, opts ...QueryOption) QueryActio
 			WithClip(&page.Viewport{
 				// Round the dimensions, as otherwise we might
 				// lose one pixel in either dimension.
-				X:      math.Round(box.Margin[0]),
-				Y:      math.Round(box.Margin[1]),
-				Width:  math.Round(box.Margin[4] - box.Margin[0]),
-				Height: math.Round(box.Margin[5] - box.Margin[1]),
+				X:      floats.Round(box.Margin[0], 0),
+				Y:      floats.Round(box.Margin[1], 0),
+				Width:  floats.Round(box.Margin[4]-box.Margin[0], 0),
+				Height: floats.Round(box.Margin[5]-box.Margin[1], 0),
 				// This seems to be necessary? Seems to do the
 				// right thing regardless of DPI.
 				Scale: 1.0,
